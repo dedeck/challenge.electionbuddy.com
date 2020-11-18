@@ -23,7 +23,8 @@ class Election < ApplicationRecord
       self.changed.each do |attribute|
         Audit.create(election: self, changed_attribute: self, value_changed: attribute,
                      previous_value: self.changed_attributes[attribute],
-                     new_value: self.attributes[attribute],changed_timestamp: timestamp)
+                     new_value: self.attributes[attribute],changed_timestamp: timestamp,
+                     user_id: Current.user.id)
       end
     end
   end
