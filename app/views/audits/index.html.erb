@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Audit log for Election: <%= @election.name%></h1>
+
+<table>
+  <thead>
+  <tr>
+    <th>Changed Attribute Type</th>
+    <th>Changed Attribute Name</th>
+    <th>Value Changed</th>
+    <th>Previous Value</th>
+    <th>New Value</th>
+    <th>User</th>
+    <th>Timestamp</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @audits.each do |audit| %>
+    <tr>
+      <td><%= audit.changed_attribute_type %></td>
+      <td><%= audit.changed_attribute.name %></td>
+      <td><%= audit.value_changed %></td>
+      <td><%= audit.previous_value %></td>
+      <td><%= audit.new_value %></td>
+      <td><%= audit.user_id %></td>
+      <td><%= audit.changed_timestamp %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br>
