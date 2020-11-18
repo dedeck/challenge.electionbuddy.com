@@ -8,6 +8,7 @@ class Question < ApplicationRecord
   before_save :add_audit
 
   def add_audit
+    return if self.new_record?
     if self.changed?
       timestamp = Time.now
       self.changed.each do |attribute|
